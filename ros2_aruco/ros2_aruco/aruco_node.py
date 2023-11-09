@@ -45,12 +45,10 @@ class ArucoNode(rclpy.node.Node):
     def __init__(self):
         super().__init__("aruco_node")
 
-        dictionary_in_use = "DICT_APRILTAG_36h11"
-
         # Declare and read parameters
         self.declare_parameter(
-            name="marker_size",
-            value=0.15,
+            name= "marker_size",
+            value= 0.15,
             descriptor=ParameterDescriptor(
                 type=ParameterType.PARAMETER_DOUBLE,
                 description="Size of the markers in meters.",
@@ -58,8 +56,8 @@ class ArucoNode(rclpy.node.Node):
         )
 
         self.declare_parameter(
-            name="aruco_dictionary_id",
-            value=dictionary_in_use,
+            name= "aruco_dictionary_id",
+            value= "DICT_5X5_250",
             descriptor=ParameterDescriptor(
                 type=ParameterType.PARAMETER_STRING,
                 description="Dictionary that was used to generate markers.",
