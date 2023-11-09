@@ -45,10 +45,12 @@ class ArucoNode(rclpy.node.Node):
     def __init__(self):
         super().__init__("aruco_node")
 
+        dictionary_in_use = "DICT_APRILTAG_36h11"
+
         # Declare and read parameters
         self.declare_parameter(
             name="marker_size",
-            value=0.0625,
+            value=0.15,
             descriptor=ParameterDescriptor(
                 type=ParameterType.PARAMETER_DOUBLE,
                 description="Size of the markers in meters.",
@@ -57,7 +59,7 @@ class ArucoNode(rclpy.node.Node):
 
         self.declare_parameter(
             name="aruco_dictionary_id",
-            value="DICT_5X5_250",
+            value=dictionary_in_use,
             descriptor=ParameterDescriptor(
                 type=ParameterType.PARAMETER_STRING,
                 description="Dictionary that was used to generate markers.",
@@ -66,7 +68,7 @@ class ArucoNode(rclpy.node.Node):
 
         self.declare_parameter(
             name="image_topic",
-            value="/camera/image_raw",
+            value="/depth_camera/image_raw",
             descriptor=ParameterDescriptor(
                 type=ParameterType.PARAMETER_STRING,
                 description="Image topic to subscribe to.",
@@ -75,7 +77,7 @@ class ArucoNode(rclpy.node.Node):
 
         self.declare_parameter(
             name="camera_info_topic",
-            value="/camera/camera_info",
+            value="/depth_camera/camera_info",
             descriptor=ParameterDescriptor(
                 type=ParameterType.PARAMETER_STRING,
                 description="Camera info topic to subscribe to.",
@@ -84,7 +86,7 @@ class ArucoNode(rclpy.node.Node):
 
         self.declare_parameter(
             name="camera_frame",
-            value="",
+            value="camera_depth_frame",
             descriptor=ParameterDescriptor(
                 type=ParameterType.PARAMETER_STRING,
                 description="Camera optical frame to use.",
