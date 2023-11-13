@@ -57,7 +57,7 @@ class ArucoNode(rclpy.node.Node):
 
         self.declare_parameter(
             name= "aruco_dictionary_id",
-            value= "DICT_5X5_250",
+            value= "DICT_APRILTAG_36h11",
             descriptor=ParameterDescriptor(
                 type=ParameterType.PARAMETER_STRING,
                 description="Dictionary that was used to generate markers.",
